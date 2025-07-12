@@ -58,7 +58,24 @@ document.addEventListener('DOMContentLoaded', () => {
             // Start fade-out timer
             setTimeout(() => {
                 imageItem.classList.add('fade-out');
-            }, 5000); // Fade out after 5 seconds
+
+                // Remove the image from the DOM after fading out
+                setTimeout(async () => {
+                    try {
+                        const response = await fetch(`/delete/${image.filename}`, {
+                            method: 'DELETE',
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`Failed to delete ${image.filename}`);
+                        }
+
+                        gallery.removeChild(imageItem);
+                    } catch (error) {
+                        console.error(error);
+                    }
+                }, 1000); // Remove after fade-out animation
+            }, image.expiration * 1000); // Fade out after expiration time in seconds
         });
     }
 

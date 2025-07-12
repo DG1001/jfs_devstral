@@ -116,6 +116,17 @@ def upload_file():
 
     return jsonify({'error': 'File type not allowed'}), 400
 
+@app.route('/delete/<filename>', methods=['DELETE'])
+def delete_file(filename):
+    try:
+        os.remove(os.path.join(UPLOAD_FOLDER, filename))
+        metadata = load_metadata()
+        metadata = [entry for entry in metadata if entry['filename'] != filename]
+        save_metadata(metadata)
+        return jsonify({'message': f'{filename} deleted successfully'})
+    except FileNotFoundError:
+        return jsonify({'error': 'File not found'}), 404
+
 if __name__ == '__main__':
     threading.Thread(target=start_cleanup_thread, daemon=True).start()
     app.run(port=5000)
