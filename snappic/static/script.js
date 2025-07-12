@@ -27,13 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function loadGallery() {
+        const gallery = document.getElementById('imageGallery');
+        if (!gallery) return;  // Exit if imageGallery does not exist
+
         const response = await fetch('/api/images');
         if (!response.ok) {
             throw new Error('Failed to load images');
         }
 
         const metadata = await response.json();
-        const gallery = document.getElementById('imageGallery');
 
         // Clear the current gallery
         gallery.innerHTML = '';
