@@ -11,7 +11,7 @@
         <h1>Gallery</h1>
         <div id="imageGallery">
             {% for image in images %}
-                <div class="image-item">
+                <div class="image-item" data-expiration="{{ image.expiration }}">
                     <img src="{{ url_for('uploaded_file', filename=image.filename) }}" alt="{{ image.comment }}">
                     <p>{{ image.comment }}</p>
                 </div>

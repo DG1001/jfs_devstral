@@ -67,4 +67,9 @@ button:hover {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
+    transition: opacity 5s ease-in-out; /* Fade out over 5 seconds */
+}
+
+.image-item.fade-out img {
+    opacity: 0;
 }
