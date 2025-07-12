@@ -38,6 +38,7 @@ def cleanup_images():
         if now > expiration:
             try:
                 os.remove(os.path.join(UPLOAD_FOLDER, entry['filename']))
+                print(f"Deleted image: {entry['filename']}")  # Log deletion
                 to_delete.append(entry)
             except FileNotFoundError:
                 pass
