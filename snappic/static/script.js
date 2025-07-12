@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.error(error);
                     }
                 }, 1000); // Remove after fade-out animation
-            }, image.expiration * 1000); // Fade out after expiration time in seconds
+            }, image.expiration * 1000 - 5000); // Fade out after expiration time in seconds minus 5 seconds for fade-out animation
         });
     }
 
