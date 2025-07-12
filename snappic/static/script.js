@@ -1,27 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('uploadForm').addEventListener('submit', async (event) => {
-        event.preventDefault();
+    const uploadForm = document.getElementById('uploadForm');
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
 
-        const formData = new FormData(event.target);
+            const formData = new FormData(event.target);
 
-        try {
-            const response = await fetch('/upload', {
-                method: 'POST',
-                body: formData,
-            });
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData,
+                });
 
-            if (!response.ok) {
-                throw new Error('Upload failed');
+                if (!response.ok) {
+                    throw new Error('Upload failed');
+                }
+
+                alert('File uploaded successfully');
+                event.target.reset();
+                loadGallery(); // Reload the gallery after a successful upload
+            } catch (error) {
+                console.error(error);
+                alert('Error uploading file');
             }
-
-            alert('File uploaded successfully');
-            event.target.reset();
-            loadGallery(); // Reload the gallery after a successful upload
-        } catch (error) {
-            console.error(error);
-            alert('Error uploading file');
-        }
-    });
+        });
+    }
 
     async function loadGallery() {
         const response = await fetch('/api/images');
