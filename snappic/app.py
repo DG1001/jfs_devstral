@@ -95,7 +95,7 @@ def upload_file():
         file.seek(0)
         file.save(filepath)
 
-        expiration = datetime.now() + timedelta(seconds=15)  # 5 seconds visible, 10 seconds fade-out
+        expiration = datetime.now() + timedelta(seconds=15)  # 15 seconds visible, 10 seconds fade-out
         metadata = load_metadata()
         metadata.append({
             'filename': filename,
