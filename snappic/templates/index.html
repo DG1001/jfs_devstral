@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapPic - Upload</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Your Photo</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/jpeg, image/png, image/webp" required>
+            <input type="text" name="comment" maxlength="100" placeholder="Add a comment (max 100 chars)" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

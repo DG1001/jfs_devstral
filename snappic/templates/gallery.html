@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapPic - Gallery</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gallery</h1>
+        <div id="imageGallery">
+            {% for image in images %}
+                <div class="image-item">
+                    <img src="{{ url_for('uploaded_file', filename=image.filename) }}" alt="{{ image.comment }}">
+                    <p>{{ image.comment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
