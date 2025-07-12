@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <h1>Gallery</h1>
+        <a href="/">Back to Upload</a> <!-- Link back to the index page -->
         <div id="imageGallery">
             {% for image in images %}
                 <div class="image-item" data-expiration="{{ image.expiration }}">

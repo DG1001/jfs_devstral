@@ -73,14 +73,11 @@ def uploaded_file(filename):
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    if 'file' not in request.files or 'comment' not in request.form:
-        return jsonify({'error': 'No file or comment part'}), 400
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
 
     file = request.files['file']
-    comment = request.form['comment']
-
-    if comment and len(comment) > 100:
-        return jsonify({'error': 'Comment too long (max 100 characters)'}), 400
+    comment = request.form.get('comment', '')  # Make comment optional
 
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400

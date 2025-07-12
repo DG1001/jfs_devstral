@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.alt = image.comment;
 
             const comment = document.createElement('p');
-            comment.textContent = image.comment;
+            comment.textContent = image.comment || '';  // Make comment optional
 
             imageItem.appendChild(img);
             imageItem.appendChild(comment);
